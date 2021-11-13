@@ -1,0 +1,17 @@
+.products-page {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-list-section {
+    width: 49%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-details-section {
+    width: 49%;
+    min-height: 400px;
+    border: 1px solid #ccc;
+}

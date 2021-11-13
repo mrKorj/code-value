@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import {NavBar} from "./components/navBar/NavBar";
 import './App.css';
+import {SearchPanel} from "./components/searchPanel/SearchPanel";
+import {ProductsPage} from "./components/productsPage/ProductsPage";
+import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+// import {getDataFromLocalStorageAction} from "./store/actions";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const {products} = useSelector(state => state.appState)
+    // const dispatch = useDispatch()
+
+    useEffect(() => {
+        localStorage.setItem('users-hours-table', JSON.stringify(products))
+    }, [products])
+
+    // useEffect(() => {
+    //     dispatch(getDataFromLocalStorageAction(JSON.parse(localStorage.getItem('code-value')) || []))
+    // }, [dispatch])
+
+
+    return (
+        <div style={{width: '100%'}}>
+            <NavBar/>
+            <SearchPanel/>
+            <div className='container'>
+                <ProductsPage/>
+            </div>
+        </div>
+    );
 }
 
 export default App;
