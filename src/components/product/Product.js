@@ -6,7 +6,8 @@ import {deleteProductAction, showProductDetailsAction} from "../../store/actions
 export const Product = ({product}) => {
     const dispatch = useDispatch()
 
-    const deleteProductHandler = () => {
+    const deleteProductHandler = (e) => {
+        e.stopPropagation()
         dispatch(deleteProductAction(product.id))
     }
 
